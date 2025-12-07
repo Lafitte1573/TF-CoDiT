@@ -103,7 +103,7 @@ python src/scripts/train.py --config configs/train.yaml
 如果我们的工作对你有帮助，请引用：
 ```bibtex
 @article{yourmodel2024,
-  title={Your Model Name: A Unified Multimodal Understanding and Generation Model},
+  title={BonDiffuser: Time Series Synthesis Using Diffusion Models for Treasury Bond Futures},
   author={Your Name and Co-authors},
   journal={arXiv preprint arXiv:你的论文号},
   year={2024}
