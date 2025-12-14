@@ -1,4 +1,4 @@
-# BonDiffuser: Time Series Synthesis Using Diffusion Models for Treasury Bond Futures
+# TF-DiT: Time Series Synthesis with Diffusion Transformers for Treasury Futures
 
 [![GitHub Stars](https://img.shields.io/github/stars/你的用户名/仓库名?style=social)](https://github.com/你的用户名/仓库名)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -10,12 +10,16 @@
 
 **中文** | **[English](docs/README_en.md)**
 
-## ✨ 特性亮点
+[//]: # (## ✨ 特性亮点)
 
-*   **统一架构**：一个模型同时支持图像/视频理解和生成、视觉问答、多模态对话等任务。
-*   **开源复现**：提供完整的训练代码、预训练权重和数据预处理流程。
-*   **即插即用**：提供简单的API和Gradio Web Demo，无需训练即可快速体验。
-*   **SOTA性能**：在 [MMBench](https://example.com)、[SEED-Bench](https://example.com) 等权威多模态基准测试中达到领先水平。
+[//]: # ()
+[//]: # (*   **统一架构**：一个模型同时支持图像/视频理解和生成、视觉问答、多模态对话等任务。)
+
+[//]: # (*   **开源复现**：提供完整的训练代码、预训练权重和数据预处理流程。)
+
+[//]: # (*   **即插即用**：提供简单的API和Gradio Web Demo，无需训练即可快速体验。)
+
+[//]: # (*   **SOTA性能**：在 [MMBench]&#40;https://example.com&#41;、[SEED-Bench]&#40;https://example.com&#41; 等权威多模态基准测试中达到领先水平。)
 
 ## 🚀 快速开始
 
@@ -25,6 +29,18 @@ git clone https://github.com/你的用户名/仓库名.git
 cd 仓库名
 pip install -r requirements.txt
 ```
+
+## 🔥 模型训练
+
+### 训练 VAE 模型
+1. **数据准备**：把 PNG、JPG、JPEG 等格式的图片保存在 `data_dir` 目录下
+2. **执行训练**：
+```bash
+torchrun --nproc_per_node=$NUM_GPUS vae/train_vae.py --data_dir $DATA_DIR --output_dir $OUTPUT_DIR
+```
+参数解释：
+- `--data_dir`：数据集路径。
+- `--output_dir`：模型保存路径，训练好的 VAE 模型包括一个 .safetenses，一个 .bin 文件，以及一个 config.json 文件。
 
 ### 使用预训练模型快速推理
 ```python
