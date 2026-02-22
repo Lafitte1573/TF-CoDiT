@@ -1,7 +1,5 @@
 <h1 style="text-align: center">TF-CoDiT: Conditional Time Series Synthesis with Diffusion Transformers for Treasury Futures</h1>
 
----
-
 <p align="center">
   <a>Anonymous Authors</a>
 </p>
@@ -20,8 +18,6 @@
 <img src="plot/cover.png" width="80%">
 </div>
 
----
-
 ## Contents
 
 - [Setup](#-setup)
@@ -32,7 +28,7 @@
 - [Citation](#-citation)
 - [Contact & Acknowledgements](#-contact--acknowledgements)
 
----
+
 
 ## Setup
 
@@ -48,7 +44,7 @@ cd repo
 # Install dependencies
 pip install -r requirements.txt
 ```
----
+
 
 ## Data Preparation
 
@@ -57,18 +53,17 @@ pip install -r requirements.txt
 - Run `python utils/preprocess.py` to preprocess the data
 - Run `python utils/prepare_dataset.py` to prepare the dataset
 
----
+
 
 ## Training
 
-| Device | Command |
-|--------|---------|
-| **TPU** | `python train.py -c configs/your_config.yaml` (requires gcloud + env setup) |
-| **GPU** | `deepspeed train.py -c configs/your_config.yaml` |
+```shell
+deepspeed train.py -c configs/your_config.yaml
+````
 
 Configs live in `configs/`. Adjust `batch_size`, data paths, etc. as needed.
 
----
+
 
 ## Inference
 
@@ -94,7 +89,7 @@ python inference.py
   --save_path out.jpg
 ```
 
----
+
 
 [//]: # ()
 [//]: # (## Evaluation)
@@ -102,7 +97,7 @@ python inference.py
 [//]: # ()
 [//]: # (| Benchmark | Command |)
 
-[//]: # (|-----------|---------|)
+[//]: # (|--||)
 
 [//]: # (| **GenEval** | `accelerate launch evaluation/sample_geneval.py evaluation/geneval.yaml` |)
 
@@ -113,7 +108,7 @@ python inference.py
 [//]: # ()
 [//]: # (See each benchmark’s official repo and scripts in `evaluation/` for full steps.)
 [//]: # ()
-[//]: # (---)
+[//]: # ()
 
 ## Citation
 
