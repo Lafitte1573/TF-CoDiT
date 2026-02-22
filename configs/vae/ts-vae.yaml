@@ -1,0 +1,40 @@
+# VAE模型配置
+model:
+  in_channel: 4
+  latent_dim: 32
+  duration: 64
+  mid_channels: [16, 32]
+
+# 训练配置
+training:
+  # 数据相关
+  data_dir: "data/processed"
+  batch_size: 32
+  num_workers: 4
+  duration: 64
+
+  # 训练超参数
+  num_epochs: 3
+  learning_rate: 0.001
+  weight_decay: 0.01
+  gradient_accumulation_steps: 1
+  kl_weight: 0.0001
+
+  # 硬件配置
+  use_cuda: true
+  fp16: true
+  pin_memory: false
+
+  # 输出配置
+  output_dir: "outputs/vae_for_dwt_d64"
+  save_steps: 1000
+  save_total_limit: 3
+
+  # 日志配置
+  logging_dir: "./logs"
+  logging_steps: 10
+  logging_first_step: true
+
+# 模型特定参数
+model_specific:
+  input_shape: [7, 64]

@@ -1,6 +1,6 @@
 trainer:
-  cache_dir: "../.cache/torch_xla"
-  checkpoint_dir: "../output/512-Gemma-AdaLN-Zero-APE-Hidden-Size-1280"
+  cache_dir: ".cache/tf_codit"
+  checkpoint_dir: "outputs/512-Gemma-IT-AdaLN-TF-CoDiT"
   checkpointing_steps: 5000
   consolidation_steps: 50000
   enable_gradient_checkpointing: false
@@ -14,17 +14,16 @@ trainer:
   mixed_precision: "bf16"
   mode_scale: 1.29
   precondition_outputs: false
-  project: "FuseDiT"
+  project: "TF-CoDiT"
   resume_from: null
-  run: "512-Gemma-AdaLN-Zero-APE-Hidden-Size-1280"
+  run: "512-Gemma-IT-AdaLN-Zero-APE"
   seed: 42
   train_dit: true
   train_llm: false
   weighting_scheme: "logit_normal"
 model:
   attention: "self"
-  base: "google/gemma-2b"
-  dit_hidden_size: 1280
+  base: "google/gemma-2b-it"
   dit_num_hidden_layers: 18
   encoder_type: "llm"
   name: "FuseDiT"
@@ -38,8 +37,7 @@ ema:
   decay: 0.99
   update_steps: 100
 vae:
-  pretrained_model_name_or_path: "stabilityai/stable-diffusion-3-medium-diffusers"
-  subfolder: "vae"
+  pretrained_model_name_or_path: "outputs/vae_for_dwt_d64"
 noise_scheduler:
   pretrained_model_name_or_path: "stabilityai/stable-diffusion-3-medium-diffusers"
   subfolder: "scheduler"
@@ -52,18 +50,12 @@ lr_scheduler:
 data:
   apply_chat_template: false
   batch_size: 16
-  caption_column: 
-    original: "original_caption.txt"
-    synthetic: "synthetic_caption.txt"
-  center_crop: true
   dataloader_num_workers: 32
-  data_path: "../output/cc12m-recaptioned/cc12m-train-{0000..2175}.tar"
+  data_path: "data/processed"
   device_prefetch_size: 64
-  image_column: "image.jpg"
-  instruction: ""
   loader_prefetch_size: 64
   max_prompt_length: 256
   original_caption_rate: 0.0
   random_dropping_rate: 0.1
   resolution: 512
-  tokenizer: "google/gemma-2b"
+  tokenizer: "google/gemma-2b-it"
