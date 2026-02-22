@@ -16,7 +16,7 @@
 </p>
 
 <div align="center">
-<img src="plot/cover.png" width="80%">
+<img src="plot/cover.png" width="100%">
 </div>
 </div>
 
@@ -74,7 +74,7 @@ torchrun \
 deepspeed train.py -c configs/dit/gemma-it.yaml
 ````
 
-Configs live in `configs/`. Adjust `batch_size`, data paths, etc. as needed.
+Configs live in `configs/`. Adjust batch size, model paths, etc. as needed.
 
 
 ## Inference
